@@ -48,7 +48,7 @@ body {
 
 // ._container
 ._container {
-  padding: 0px $containerPadding/2+px 0px $containerPadding/2+px;
+  padding: 0px #{calc($containerPadding / 2) + px} 0px #{calc($containerPadding / 2) + px};
   margin: 0px auto;
   max-width: $maxWidthContainer + px;
 }

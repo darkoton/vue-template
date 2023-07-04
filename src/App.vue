@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
     <div class="content">
-      <div class="tatat">ararawrwar</div>
       <the-header></the-header>
       <router-view class="page" />
       <the-footer></the-footer>
@@ -23,8 +22,4 @@ export default {
 
 <style lang="scss" >
 @import "@/assets/scss/style";
-
-.tatat {
-  @include adaptiv-font(50, 40);
-}
 </style>
