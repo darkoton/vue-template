@@ -1,17 +1,30 @@
 @font-face {
   font-family: 'iconfonts';
+<<<<<<< HEAD
   src: url('../iconfonts/iconfonts.eot?lhqpxj');
   src: url('../iconfonts/iconfonts.eot?lhqpxj#iefix') format('embedded-opentype'),
     url('../iconfonts/iconfonts.ttf?lhqpxj') format('truetype'),
     url('../iconfonts/iconfonts.woff?lhqpxj') format('woff'),
     url('../iconfonts/iconfonts.svg?lhqpxj#iconfonts') format('svg');
+=======
+  src: url('@/assets/iconfonts/icomoon.eot?yyk8bg');
+  src: url('@/assets/iconfonts/icomoon.eot?yyk8bg#iefix') format('embedded-opentype'),
+    url('@/assets/iconfonts/icomoon.ttf?yyk8bg') format('truetype'),
+    url('@/assets/iconfonts/icomoon.woff?yyk8bg') format('woff'),
+    url('@/assets/iconfonts/icomoon.svg?yyk8bg#icomoon') format('svg');
+>>>>>>> f39c05d4781859325d7cb72f487a2fae14095cbf
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
+<<<<<<< HEAD
 [class^="_icon-"]:before,
 [class*=" _icon-"]:before {
+=======
+[class^="icon-"]:before,
+[class*="icon-"]:before {
+>>>>>>> f39c05d4781859325d7cb72f487a2fae14095cbf
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'iconfonts' !important;
   speak: never;
@@ -26,4 +39,40 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+<<<<<<< HEAD
 //< " КЛАССЫ " >=============================================================================================================>//
+=======
+//< " КЛАССЫ " >=============================================================================================================>//
+
+
+.icon-moon:before {
+  content: "\e902";
+}
+.icon-backet:before {
+  content: "\e903";
+}
+.icon-close:before {
+  content: "\e904";
+}
+.icon-favorite:before {
+  content: "\e905";
+}
+.icon-phone:before {
+  content: "\e906";
+}
+.icon-search:before {
+  content: "\e907";
+}
+.icon-sun:before {
+  content: "\e908";
+}
+.icon-time:before {
+  content: "\e909";
+}
+.icon-arrow-left:before {
+  content: "\e900";
+}
+.icon-arrow-right:before {
+  content: "\e901";
+}
+>>>>>>> f39c05d4781859325d7cb72f487a2fae14095cbf
