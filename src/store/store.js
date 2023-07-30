@@ -1,12 +1,13 @@
+// import axios from '@/axios/base'; // axios
 import { createStore } from 'vuex'
 
 const store = createStore({
   state() {
-    return {
-    }
+    return {}
   },
-  mutations: {
-  }
+  actions: {},
+  getters: {},
+  mutations: {}
 })
 
 export default store

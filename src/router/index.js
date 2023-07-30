@@ -6,6 +6,10 @@ const routes = [
     name: 'home',
     component: () => import(/* webpackChunkName: "about" */ '@/views/TheHome.vue')
   },
+  {
+    path: "/:pathMatch(.*)",
+    component: () => import(/* webpackChunkName: "about" */ '@/views/TheNotFound.vue')
+  }
 ]
 
 const router = createRouter({
