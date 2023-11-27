@@ -10,6 +10,9 @@
 //< " ФАЙЛ С ОТДЕЛЬНЫМИ БЛОКАМИ " >=============================================================================================================>//
 // @import "./modules/_ui";
 
+//< " TAILWIND CSS FILE " >=============================================================================================================>//
+@import "./modules/_tailwind";
+
 body {
   background-color: $colorBg;
   font-family: $fontFamily;
@@ -20,6 +23,8 @@ body {
   &._lock-scroll {
      overflow: hidden;
   }
+
+  @include scrollbars(5px, $colorGreen, #111, 10px)
 }
 #app{
   height: 100%;

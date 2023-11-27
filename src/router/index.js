@@ -7,9 +7,9 @@ const routes = [
     component: () => import('@/views/TheHome.vue')
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import('@/views/TheAbout.vue')
+    path: '/tailwind',
+    name: 'tailwind',
+    component: () => import('@/views/TheTailwind.vue')
   },
   {
     path: "/:pathMatch(.*)",

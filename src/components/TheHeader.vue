@@ -4,12 +4,12 @@
       <div class="header__container _container">
         <div class="header__body">
           <div class="header__logo">
-            <img src="@/assets/img/header/logo.png" alt="" />
+            <img src="@/assets/img/template/logo.png" alt="" />
             <span>Vue.js</span>
           </div>
           <nav class="header__nav">
             <router-link :to="'/'" class="header__nav-item">Home</router-link>
-            <router-link :to="'/about'" class="header__nav-item"
+            <router-link :to="'/tailwind'" class="header__nav-item"
               >Tailwind</router-link
             >
           </nav>
