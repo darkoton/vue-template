@@ -2,7 +2,7 @@
 @import "./modules/_nullstyle";
 
 //< " ПОДКЛЮЧАЕМ ФАЙЛ С ШРИФТАМИ " >=============================================================================================================>//
-// @import "./modules/_fonts";
+@import "./modules/_fonts";
 
 //< " ПОДКЛЮЧАЕМ ФАЙЛ С ИКОНКАМИ " >=============================================================================================================>//
 // @import "./modules/_iconfonts";
@@ -13,7 +13,7 @@
 body {
   background-color: $colorBg;
   font-family: $fontFamily;
-  color: $colorDark;
+  color: $colorWhite;
   font-size: 14px;
 
   // ._lock-scroll

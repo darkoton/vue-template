@@ -4,12 +4,18 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/TheHome.vue')
+    component: () => import('@/views/TheHome.vue')
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import('@/views/TheAbout.vue')
   },
   {
     path: "/:pathMatch(.*)",
-    component: () => import(/* webpackChunkName: "about" */ '@/views/TheNotFound.vue')
-  }
+    component: () => import('@/views/TheNotFound.vue')
+  },
+
 ]
 
 const router = createRouter({
