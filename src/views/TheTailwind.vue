@@ -43,9 +43,12 @@
             >
 
             <svg
-              class="w-7 h-7 absolute top-4 right-4 p-1 rounded bg-neutral-700 cursor-pointer duration-200"
-              :class="{ 'bg-green-600': copied }"
-              @click="copy('npm uni tailwindcss autoprefixer postcss')"
+              class="w-7 h-7 absolute top-4 right-4 p-1 rounded bg-green-600 cursor-pointer duration-200"
+              :class="{ 'bg-neutral-700': !copied1 }"
+              @click="
+                copied1 = true;
+                copy('npm uni tailwindcss autoprefixer postcss');
+              "
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
               height="800px"
@@ -72,9 +75,12 @@
             >
 
             <svg
-              class="w-7 h-7 absolute top-4 right-4 p-1 rounded bg-neutral-700 cursor-pointer duration-200"
-              :class="{ 'bg-green-600': copied }"
-              @click="copy('npm i tailwindcss autoprefixer postcss')"
+              class="w-7 h-7 absolute top-4 right-4 p-1 rounded bg-green-600 cursor-pointer duration-200"
+              :class="{ 'bg-neutral-700': !copied2 }"
+              @click="
+                copied2 = true;
+                copy('npm i tailwindcss autoprefixer postcss');
+              "
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
               height="800px"
@@ -102,15 +108,16 @@
 export default {
   data() {
     return {
-      copied: false,
+      copied1: false,
+      copied2: false,
     };
   },
   methods: {
     copy(message) {
-      this.$copyText(message);
-      this.copied = true;
+      this.$clipboard(message);
       setTimeout(() => {
-        this.copied = false;
+        this.copied1 = false;
+        this.copied2 = false;
       }, 400);
     },
   },

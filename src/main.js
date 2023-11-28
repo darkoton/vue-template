@@ -4,14 +4,13 @@ import router from './router' // router
 // import store from './store/store' // vuex
 // import axios from './plugins/axios' //axios
 // import i18n from "@/locales/i18n-config"; //i18n localization
-import VueClipboard from 'vue-clipboard2'
+import Clipboard from 'v-clipboard'
 
 import "@/assets/style/main.scss"
 
 
 const app = createApp(App)
-
-app.use(VueClipboard) // router
+app.use(Clipboard)
 app.use(router) // router
 // app.use(store) // vuex
 // app.use(axios) //axios
