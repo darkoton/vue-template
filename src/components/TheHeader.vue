@@ -8,9 +8,12 @@
             <span>Vue.js</span>
           </div>
           <nav class="header__nav">
-            <router-link :to="'/'" class="header__nav-item">Home</router-link>
-            <router-link :to="'/tailwind'" class="header__nav-item"
-              >Tailwind</router-link
+            <router-link
+              :to="item.path"
+              class="header__nav-item"
+              v-for="item in menu"
+              :key="item"
+              >{{ item.title }}</router-link
             >
           </nav>
         </div>
@@ -22,6 +25,25 @@
 <script>
 export default {
   name: "TheHeader",
+
+  data() {
+    return {
+      menu: [
+        {
+          title: "Home",
+          path: "/",
+        },
+        {
+          title: "Tailwind",
+          path: "/tailwind",
+        },
+        {
+          title: "Components",
+          path: "/components",
+        },
+      ],
+    };
+  },
 };
 </script>
 

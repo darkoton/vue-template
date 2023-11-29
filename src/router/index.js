@@ -12,6 +12,11 @@ const routes = [
     component: () => import('@/views/TheTailwind.vue')
   },
   {
+    path: '/components',
+    name: 'components',
+    component: () => import('@/views/TheComponents.vue')
+  },
+  {
     path: "/:pathMatch(.*)",
     component: () => import('@/views/TheNotFound.vue')
   },

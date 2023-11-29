@@ -5,12 +5,18 @@ import router from './router' // router
 // import axios from './plugins/axios' //axios
 // import i18n from "@/locales/i18n-config"; //i18n localization
 import Clipboard from 'v-clipboard'
+import MySpoiler from "@/components/ui/spoiler.vue";
+
 
 import "@/assets/style/main.scss"
 
 
 const app = createApp(App)
+
+app.component('MySpoiler', MySpoiler)
+
 app.use(Clipboard)
+
 app.use(router) // router
 // app.use(store) // vuex
 // app.use(axios) //axios
