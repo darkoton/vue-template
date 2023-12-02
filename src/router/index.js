@@ -1,27 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import routesJson from './routes.json';
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: () => import('@/views/TheHome.vue')
-  },
-  {
-    path: '/tailwind',
-    name: 'tailwind',
-    component: () => import('@/views/TheTailwind.vue')
-  },
-  {
-    path: '/components',
-    name: 'components',
-    component: () => import('@/views/TheComponents.vue')
-  },
-  {
-    path: "/:pathMatch(.*)",
-    component: () => import('@/views/TheNotFound.vue')
-  },
+const routesData = routesJson
 
-]
+const routes = routesData.map(el => {
+  el.component = () => import("@/views/" + el.componentPath);
+  return el
+})
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

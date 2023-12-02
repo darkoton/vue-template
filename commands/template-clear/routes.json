@@ -1,0 +1,13 @@
+[
+    {
+        "path": "/",
+        "name": "home",
+        "componentPath": "TheHome.vue",
+        "component": {}
+    },
+    {
+        "path": "/:pathMatch(.*)",
+        "componentPath": "TheNotFound.vue",
+        "component": {}
+    }
+]
