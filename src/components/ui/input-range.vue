@@ -1,10 +1,11 @@
 <template>
   <div class="range-slider">
-    <input type="range" class="slider" :value="value" :min="min" :max="max" @change="change" @input="input" :style="{
-      background: style['--slider-bg'] ? style['--slider-bg'] : '#606579',
-    }">
+    <input type="range" class="slider" :value="modelValue || curretValue" :min="min" :max="max" @input="input"
+      @change="change" :style="{
+        background: style['--slider-bg'] ? style['--slider-bg'] : '#606579',
+      }" :step="step">
     <div class="slider-thumb" :class="[thumb]" :style="{
-      left: (value / max) * 100 + '%',
+      left: ((modelValue || curretValue) / max) * 100 + '%',
       background: style['--slider-thumb-bg'] ? style['--slider-thumb-bg'] : '#fff',
       width: style['--slider-thumb-size'] ? style['--slider-thumb-size'] : '10px',
       height: style['--slider-thumb-size'] ? style['--slider-thumb-size'] : '10px',
@@ -12,7 +13,7 @@
       <div class="tooltip"></div>
     </div>
     <div class="progress" :style="{
-      width: (value / max) * 100 + '%',
+      width: ((modelValue || curretValue) / max) * 100 + '%',
       background: style['--slider-progress-bg'] ? style['--slider-progress-bg'] : '#403CAE',
       '--slider-progress-bg-hover': style['--slider-progress-bg-hover'] ? style['--slider-progress-bg-hover'] : '#403CAE'
     }
@@ -27,8 +28,24 @@ export default defineComponent({
   name: "VInputRange",
   props: {
     modelValue: {
-      type: Number,
-      default: 0,
+      type: [String, Number],
+      validator(value, vm) {
+        if (value !== undefined && vm && vm.value !== undefined) {
+          console.error("Both 'modelValue' and 'value' props are defined. Choose only one.");
+          return false;
+        }
+        return !isNaN(Number(value))
+      }
+    },
+    value: {
+      type: [String, Number],
+      validator(value, vm) {
+        if (value !== undefined && vm && vm.modelValue !== undefined) {
+          console.error("Both 'modelValue' and 'value' props are defined. Choose only one.");
+          return false;
+        }
+        return !isNaN(Number(value))
+      }
     },
     min: {
       type: [String, Number],
@@ -40,6 +57,13 @@ export default defineComponent({
     max: {
       type: [String, Number],
       default: 100,
+      validator(value) {
+        return !isNaN(Number(value))
+      }
+    },
+    step: {
+      type: [String, Number],
+      default: 1,
       validator(value) {
         return !isNaN(Number(value))
       }
@@ -64,19 +88,32 @@ export default defineComponent({
   emit: ["update:modelValue"],
   data: () => {
     return {
-      value: 0
+      curretValue: null,
+      free: true,
+    }
+  },
+  watch: {
+    value(v) {
+      if (this.free) {
+        this.curretValue = v
+      }
     }
   },
   methods: {
     input(event) {
-      this.value = +event.target.value
-    },
-    change(event) {
+      this.free = false
+      this.curretValue = +event.target.value
       this.$emit("update:modelValue", +event.target.value);
+      this.$emit("input", event);
     },
+    change() {
+      this.free = true
+    }
   },
-  mounted() {
-    this.value = this.modelValue
+  created() {
+    if (this.value) {
+      this.curretValue = this.value
+    }
   }
 });
 </script>
