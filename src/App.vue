@@ -11,4 +11,7 @@
 <script setup>
 import TheHeader from "./components/TheHeader.vue";
 import TheFooter from "./components/TheFooter.vue";
+// import { useStore } from "@/stores/store";
+
+// const store = useStore();
 </script>
