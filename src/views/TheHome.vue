@@ -20,7 +20,7 @@
                 <p class="template__text">
                   This template contains useful developments for a web
                   application developed in Vue which contains the Composition
-                  API and TypeScript
+                  API
                 </p>
 
                 <h2 class="template__subtitle">
@@ -33,11 +33,36 @@
                     v-for="item in list"
                     :key="item"
                   >
-                    <div class="template__list-img">
-                      <a :href="item.url" target="_blank"
-                        ><img :src="item.img" alt=""
-                      /></a>
-                    </div>
+                    <a :href="item.url" target="_blank">
+                      <div class="template__list-img">
+                        <img :src="item.img" alt="" />
+                      </div>
+                    </a>
+                    <a
+                      :href="item.urlPlugin"
+                      target="_blank"
+                      class="template__list-title"
+                      >{{ item.title }}</a
+                    >
+                  </li>
+                </ul>
+
+                <h2 class="template__subtitle">
+                  In the repository you can find earlier versions with other
+                  technologies like:
+                </h2>
+
+                <ul class="template__list">
+                  <li
+                    class="template__list-item"
+                    v-for="item in old"
+                    :key="item"
+                  >
+                    <a :href="item.url" target="_blank">
+                      <div class="template__list-img">
+                        <img :src="item.img" alt="" />
+                      </div>
+                    </a>
                     <a
                       :href="item.urlPlugin"
                       target="_blank"
@@ -135,13 +160,6 @@ const list: Array<any> = [
     urlPlugin: "https://vuejs.org/",
   },
   {
-    title: "TypeScript 4.5.5",
-    img: "./technologies/typescript.svg",
-    url: "https://www.typescriptlang.org/",
-    urlPlugin:
-      "https://cli.vuejs.org/ru/core-plugins/typescript.html#%D0%BF%D0%B0%D1%80%D0%B0nn%D0%B5n%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F",
-  },
-  {
     title: "SASS/SCSS 1.63.6",
     img: "./technologies/scss.png",
     url: "https://sass-lang.com/",
@@ -154,10 +172,10 @@ const list: Array<any> = [
     urlPlugin: "https://github.com/motdotla/dotenv",
   },
   {
-    title: "Vuex 4.0.2",
-    img: "./technologies/vuex.png",
-    url: "https://vuex.vuejs.org/",
-    urlPlugin: "https://vuex.vuejs.org/installation.html",
+    title: "Pinia 2.1.7",
+    img: "./technologies/pinia.svg",
+    url: "https://pinia.vuejs.org/",
+    urlPlugin: "https://pinia.vuejs.org/introduction.html",
   },
   {
     title: "Vue-router 4.0.3",
@@ -185,7 +203,16 @@ const list: Array<any> = [
   },
 ];
 
-function copy(message: string | number) {
+const old: Array<any> = [
+  {
+    title: "Vuex 4.0.2",
+    img: "./technologies/vuex.png",
+    url: "https://vuex.vuejs.org/",
+    urlPlugin: "https://vuex.vuejs.org/installation.html",
+  },
+];
+
+function copy(message) {
   Clipboard.copy(message);
 }
 </script>
@@ -233,6 +260,7 @@ function copy(message: string | number) {
     // align-items: center;
     // width: 100%
     @include adaptiv-value(row-gap, 10, 5, 1);
+    margin-bottom: 20px;
 
     &-title {
       @include adaptiv-value(font-size, 18, 16, 1);
@@ -241,15 +269,13 @@ function copy(message: string | number) {
       cursor: pointer;
     }
     &-img {
-      width: 100%;
-      max-width: 40px;
-      height: 100%;
-      max-height: 40px;
       cursor: pointer;
 
       & img {
         width: 100%;
+        max-width: 40px;
         height: 100%;
+        max-height: 40px;
         object-fit: cover;
       }
     }
