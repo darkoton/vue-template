@@ -8,8 +8,4 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "TheError",
-};
-</script>
+<script setup lang="ts"></script>

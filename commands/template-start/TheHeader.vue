@@ -20,32 +20,27 @@
       </div>
     </div>
   </div>
-</template>
+</template> 
 
-<script>
-export default {
-  name: "TheHeader",
+<script lang="ts" setup>
+import { ref } from "vue";
 
-  data() {
-    return {
-      menu: [
-        {
-          title: "Home",
-          path: "/",
-        },
-        {
-          title: "Tailwind",
-          path: "/tailwind",
-        },
-        {
-          title: "Components",
-          path: "/components",
-        },
-      ],
-    };
+const menu = ref<Array<any>>([
+  {
+    title: "Home",
+    path: "/",
   },
-};
+  {
+    title: "Tailwind",
+    path: "/tailwind",
+  },
+  {
+    title: "Components",
+    path: "/components",
+  },
+]);
 </script>
+
 
 <style lang='scss' scoped>
 .header {

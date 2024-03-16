@@ -24,7 +24,6 @@ body {
      overflow: hidden;
   }
 
-  @include scrollbars(5px, $colorGreen, #111, 10px)
 }
 #app{
   height: 100%;

@@ -25,10 +25,9 @@
                   <svg
                     class="components__copy"
                     @click="
-                      copied2 = true;
                       copy(
                         `<my-spoiler v-model=&quot;value&quot;>Your content</my-spoiler>`
-                      );
+                      )
                     "
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -76,24 +75,16 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      spoiler: false,
-      spoilerButton: false,
-    };
-  },
-  methods: {
-    copy(message) {
-      this.$clipboard(message);
-      setTimeout(() => {
-        this.copied1 = false;
-        this.copied2 = false;
-      }, 400);
-    },
-  },
-};
+<script setup lang="ts">
+import { ref } from "vue";
+import { Clipboard } from "v-clipboard";
+
+const spoiler = ref<boolean>(false);
+const spoilerButton = ref<boolean>(false);
+
+function copy(message: string | number) {
+  Clipboard.copy(message);
+}
 </script>
 
 <style lang="scss" scoped>
