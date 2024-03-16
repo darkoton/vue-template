@@ -33,11 +33,36 @@
                     v-for="item in list"
                     :key="item"
                   >
-                    <div class="template__list-img">
-                      <a :href="item.url" target="_blank"
-                        ><img :src="item.img" alt=""
-                      /></a>
-                    </div>
+                    <a :href="item.url" target="_blank">
+                      <div class="template__list-img">
+                        <img :src="item.img" alt="" />
+                      </div>
+                    </a>
+                    <a
+                      :href="item.urlPlugin"
+                      target="_blank"
+                      class="template__list-title"
+                      >{{ item.title }}</a
+                    >
+                  </li>
+                </ul>
+
+                <h2 class="template__subtitle">
+                  In the repository you can find earlier versions with other
+                  technologies like:
+                </h2>
+
+                <ul class="template__list">
+                  <li
+                    class="template__list-item"
+                    v-for="item in old"
+                    :key="item"
+                  >
+                    <a :href="item.url" target="_blank">
+                      <div class="template__list-img">
+                        <img :src="item.img" alt="" />
+                      </div>
+                    </a>
                     <a
                       :href="item.urlPlugin"
                       target="_blank"
@@ -147,10 +172,10 @@ const list = [
     urlPlugin: "https://github.com/motdotla/dotenv",
   },
   {
-    title: "Vuex 4.0.2",
-    img: "./technologies/vuex.png",
-    url: "https://vuex.vuejs.org/",
-    urlPlugin: "https://vuex.vuejs.org/installation.html",
+    title: "Pinia 2.1.7",
+    img: "./technologies/pinia.svg",
+    url: "https://pinia.vuejs.org/",
+    urlPlugin: "https://pinia.vuejs.org/introduction.html",
   },
   {
     title: "Vue-router 4.0.3",
@@ -175,6 +200,15 @@ const list = [
     img: "./technologies/tailwind.svg",
     url: "https://tailwindcss.com/",
     urlPlugin: "",
+  },
+];
+
+const old = [
+  {
+    title: "Vuex 4.0.2",
+    img: "./technologies/vuex.png",
+    url: "https://vuex.vuejs.org/",
+    urlPlugin: "https://vuex.vuejs.org/installation.html",
   },
 ];
 
@@ -226,6 +260,7 @@ function copy(message) {
     // align-items: center;
     // width: 100%
     @include adaptiv-value(row-gap, 10, 5, 1);
+    margin-bottom: 20px;
 
     &-title {
       @include adaptiv-value(font-size, 18, 16, 1);
@@ -234,15 +269,13 @@ function copy(message) {
       cursor: pointer;
     }
     &-img {
-      width: 100%;
-      max-width: 40px;
-      height: 100%;
-      max-height: 40px;
       cursor: pointer;
 
       & img {
         width: 100%;
+        max-width: 40px;
         height: 100%;
+        max-height: 40px;
         object-fit: cover;
       }
     }

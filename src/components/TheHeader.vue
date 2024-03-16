@@ -3,9 +3,19 @@
     <div class="header__wrapper">
       <div class="header__container _container">
         <div class="header__body">
-          <div class="header__logo">
-            <img src="@/assets/img/template/logo.png" alt="" />
-            <span>Vue.js</span>
+          <div class="header__left">
+            <div class="header__logo">
+              <img src="@/assets/img/template/logo.png" alt="" />
+              <span>Vue.js</span>
+            </div>
+
+            <a
+              href="https://github.com/darkoton/vue-template"
+              target="_blank"
+              class="header__github"
+            >
+              <img src="/img/github-mark.svg" alt="" />
+            </a>
           </div>
           <nav class="header__nav">
             <router-link
@@ -20,10 +30,12 @@
       </div>
     </div>
   </div>
-</template>
+</template> 
 
 <script setup>
-const menu = [
+import { ref } from "vue";
+
+const menu = ref([
   {
     title: "Home",
     path: "/",
@@ -36,8 +48,9 @@ const menu = [
     title: "Components",
     path: "/components",
   },
-];
+]);
 </script>
+
 
 <style lang='scss' scoped>
 .header {
@@ -49,11 +62,15 @@ const menu = [
     justify-content: space-between;
     align-items: center;
   }
+  &__left {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+  }
   &__logo {
     width: 100%;
     height: 100%;
-    max-width: 40px;
-    max-height: 40px;
+
     display: flex;
     align-items: center;
     @include adaptiv-value(column-gap, 15, 10, 1);
@@ -63,7 +80,15 @@ const menu = [
 
     & img {
       width: 100%;
+      max-width: 40px;
+      max-height: 40px;
     }
+  }
+
+  &__github {
+    width: 30px;
+    height: 30px;
+    justify-self: start;
   }
   &__nav {
     display: flex;
