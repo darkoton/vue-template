@@ -8,8 +8,5 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "TheFooter",
-};
+<script setup>
 </script>
