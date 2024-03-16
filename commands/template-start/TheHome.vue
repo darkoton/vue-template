@@ -20,7 +20,7 @@
                 <p class="template__text">
                   This template contains useful developments for a web
                   application developed in Vue which contains the Composition
-                  API and TypeScript
+                  API
                 </p>
 
                 <h2 class="template__subtitle">
@@ -124,68 +124,63 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      list: [
-        {
-          title: "Vue 3.2.13",
-          img: "./technologies/vue.svg",
-          url: "https://vuejs.org/",
-          urlPlugin: "https://vuejs.org/",
-        },
-        {
-          title: "SASS/SCSS 1.63.6",
-          img: "./technologies/scss.png",
-          url: "https://sass-lang.com/",
-          urlPlugin: "https://cli.vuejs.org/guide/css.html#pre-processors",
-        },
-        {
-          title: "Dotenv 16.3.1",
-          img: "./technologies/dotenv.png",
-          url: "https://github.com/motdotla/dotenv",
-          urlPlugin: "https://github.com/motdotla/dotenv",
-        },
-        {
-          title: "Vuex 4.0.2",
-          img: "./technologies/vuex.png",
-          url: "https://vuex.vuejs.org/",
-          urlPlugin: "https://vuex.vuejs.org/installation.html",
-        },
-        {
-          title: "Vue-router 4.0.3",
-          img: "./technologies/router.png",
-          url: "https://router.vuejs.org/",
-          urlPlugin: "https://router.vuejs.org/",
-        },
-        {
-          title: "Vue-i18n 9.3.0-beta.24",
-          img: "./technologies/i18n.svg",
-          url: "https://vue-i18n.intlify.dev/",
-          urlPlugin: "https://vue-i18n.intlify.dev/",
-        },
-        {
-          title: "Axios 1.4.0",
-          img: "./technologies/axios.png",
-          url: "https://axios-http.com/",
-          urlPlugin: "https://axios-http.com/",
-        },
-        {
-          title: "Tailwind css 3.3.5",
-          img: "./technologies/tailwind.svg",
-          url: "https://tailwindcss.com/",
-          urlPlugin: "",
-        },
-      ],
-    };
+<script setup>
+import { Clipboard } from "v-clipboard";
+
+const list = [
+  {
+    title: "Vue 3.2.13",
+    img: "./technologies/vue.svg",
+    url: "https://vuejs.org/",
+    urlPlugin: "https://vuejs.org/",
   },
-  methods: {
-    copy(message) {
-      this.$clipboard(message);
-    },
+  {
+    title: "SASS/SCSS 1.63.6",
+    img: "./technologies/scss.png",
+    url: "https://sass-lang.com/",
+    urlPlugin: "https://cli.vuejs.org/guide/css.html#pre-processors",
   },
-};
+  {
+    title: "Dotenv 16.3.1",
+    img: "./technologies/dotenv.png",
+    url: "https://github.com/motdotla/dotenv",
+    urlPlugin: "https://github.com/motdotla/dotenv",
+  },
+  {
+    title: "Vuex 4.0.2",
+    img: "./technologies/vuex.png",
+    url: "https://vuex.vuejs.org/",
+    urlPlugin: "https://vuex.vuejs.org/installation.html",
+  },
+  {
+    title: "Vue-router 4.0.3",
+    img: "./technologies/router.png",
+    url: "https://router.vuejs.org/",
+    urlPlugin: "https://router.vuejs.org/",
+  },
+  {
+    title: "Vue-i18n 9.3.0-beta.24",
+    img: "./technologies/i18n.svg",
+    url: "https://vue-i18n.intlify.dev/",
+    urlPlugin: "https://vue-i18n.intlify.dev/",
+  },
+  {
+    title: "Axios 1.4.0",
+    img: "./technologies/axios.png",
+    url: "https://axios-http.com/",
+    urlPlugin: "https://axios-http.com/",
+  },
+  {
+    title: "Tailwind css 3.3.5",
+    img: "./technologies/tailwind.svg",
+    url: "https://tailwindcss.com/",
+    urlPlugin: "",
+  },
+];
+
+function copy(message) {
+  Clipboard.copy(message);
+}
 </script>
 
 <style lang='scss' scoped>

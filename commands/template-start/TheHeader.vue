@@ -22,29 +22,21 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "TheHeader",
-
-  data() {
-    return {
-      menu: [
-        {
-          title: "Home",
-          path: "/",
-        },
-        {
-          title: "Tailwind",
-          path: "/tailwind",
-        },
-        {
-          title: "Components",
-          path: "/components",
-        },
-      ],
-    };
+<script setup>
+const menu = [
+  {
+    title: "Home",
+    path: "/",
   },
-};
+  {
+    title: "Tailwind",
+    path: "/tailwind",
+  },
+  {
+    title: "Components",
+    path: "/components",
+  },
+];
 </script>
 
 <style lang='scss' scoped>

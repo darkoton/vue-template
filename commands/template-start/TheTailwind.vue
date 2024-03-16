@@ -104,24 +104,20 @@
   </section>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      copied1: false,
-      copied2: false,
-    };
-  },
-  methods: {
-    copy(message) {
-      this.$clipboard(message);
-      setTimeout(() => {
-        this.copied1 = false;
-        this.copied2 = false;
-      }, 400);
-    },
-  },
-};
+<script setup>
+import { ref } from "vue";
+import { Clipboard } from "v-clipboard";
+
+const copied1 = ref(false);
+const copied2 = ref(false);
+
+function copy(message) {
+  Clipboard.copy(message);
+  setTimeout(() => {
+    this.copied1 = false;
+    this.copied2 = false;
+  }, 400);
+}
 </script>
 
 <style scoped>
