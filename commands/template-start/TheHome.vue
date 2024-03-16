@@ -19,8 +19,7 @@
 
                 <p class="template__text">
                   This template contains useful developments for a web
-                  application developed in Vue which contains the Composition
-                  API and TypeScript
+                  application developed in Vue which contains the Options API
                 </p>
 
                 <h2 class="template__subtitle">
