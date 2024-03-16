@@ -24,7 +24,7 @@
           This template has built-in tailwind, which is available right out of
           the box. to disable it you need to comment out the path to it in
           main.scss. if you don’t need it at all, you can delete the files
-          associated with it: <span class="text-red-600">tailwind.scss</span>,
+          associated with it: <span class="text-red-600">_tailwind.scss</span>,
           <span class="text-amber-400">tailwind.config.js</span>,
           <span class="text-amber-400">postcss.config.js</span>, in
           <span class="text-amber-500">package.json</span>
@@ -41,7 +41,6 @@
             <span class="text-gray-400" ref="uni"
               >npm uni tailwindcss autoprefixer postcss</span
             >
-
             <svg
               class="w-7 h-7 absolute top-4 right-4 p-1 rounded bg-green-600 cursor-pointer duration-200"
               :class="{ 'bg-neutral-700': !copied1 }"
@@ -104,24 +103,21 @@
   </section>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      copied1: false,
-      copied2: false,
-    };
-  },
-  methods: {
-    copy(message) {
-      this.$clipboard(message);
-      setTimeout(() => {
-        this.copied1 = false;
-        this.copied2 = false;
-      }, 400);
-    },
-  },
-};
+<script setup lang="ts">
+import { Clipboard } from "v-clipboard";
+import { ref } from "vue";
+
+const copied1 = ref<boolean>(false);
+const copied2 = ref<boolean>(false);
+
+function copy(message: string) {
+  Clipboard.copy(message);
+
+  setTimeout(() => {
+    copied1.value = false;
+    copied2.value = false;
+  }, 400);
+}
 </script>
 
 <style scoped>

@@ -1,7 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import routesJson from './routes.json';
 
+
+// const routes = routesData.map(el => {
+//   el.component = () => import(el.componentPath)
+//   delete el.componentPath;
+//   return el
+// });
+
 const routesData = routesJson
+
+
 
 const routes = routesData.map(el => {
   el.component = () => import("@/views/" + el.componentPath);
