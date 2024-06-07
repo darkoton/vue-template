@@ -15,12 +15,12 @@
                 <div class="template__img">
                   <img src="@/assets/img/template/vue.svg" alt="" />
                 </div>
-                <h1 class="template__title">This is home page Vue tamplate</h1>
+                <h1 class="template__title">This is home page Vue template</h1>
 
                 <p class="template__text">
                   This template contains useful developments for a web
                   application developed in Vue which contains the Composition
-                  API and TypeScript
+                  API
                 </p>
 
                 <h2 class="template__subtitle">
@@ -33,11 +33,36 @@
                     v-for="item in list"
                     :key="item"
                   >
-                    <div class="template__list-img">
-                      <a :href="item.url" target="_blank"
-                        ><img :src="item.img" alt=""
-                      /></a>
-                    </div>
+                    <a :href="item.url" target="_blank">
+                      <div class="template__list-img">
+                        <img :src="item.img" alt="" />
+                      </div>
+                    </a>
+                    <a
+                      :href="item.urlPlugin"
+                      target="_blank"
+                      class="template__list-title"
+                      >{{ item.title }}</a
+                    >
+                  </li>
+                </ul>
+
+                <h2 class="template__subtitle">
+                  In the repository you can find earlier versions with other
+                  technologies like:
+                </h2>
+
+                <ul class="template__list">
+                  <li
+                    class="template__list-item"
+                    v-for="item in old"
+                    :key="item"
+                  >
+                    <a :href="item.url" target="_blank">
+                      <div class="template__list-img">
+                        <img :src="item.img" alt="" />
+                      </div>
+                    </a>
                     <a
                       :href="item.urlPlugin"
                       target="_blank"
@@ -124,68 +149,72 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      list: [
-        {
-          title: "Vue 3.2.13",
-          img: "./technologies/vue.svg",
-          url: "https://vuejs.org/",
-          urlPlugin: "https://vuejs.org/",
-        },
-        {
-          title: "SASS/SCSS 1.63.6",
-          img: "./technologies/scss.png",
-          url: "https://sass-lang.com/",
-          urlPlugin: "https://cli.vuejs.org/guide/css.html#pre-processors",
-        },
-        {
-          title: "Dotenv 16.3.1",
-          img: "./technologies/dotenv.png",
-          url: "https://github.com/motdotla/dotenv",
-          urlPlugin: "https://github.com/motdotla/dotenv",
-        },
-        {
-          title: "Vuex 4.0.2",
-          img: "./technologies/vuex.png",
-          url: "https://vuex.vuejs.org/",
-          urlPlugin: "https://vuex.vuejs.org/installation.html",
-        },
-        {
-          title: "Vue-router 4.0.3",
-          img: "./technologies/router.png",
-          url: "https://router.vuejs.org/",
-          urlPlugin: "https://router.vuejs.org/",
-        },
-        {
-          title: "Vue-i18n 9.3.0-beta.24",
-          img: "./technologies/i18n.svg",
-          url: "https://vue-i18n.intlify.dev/",
-          urlPlugin: "https://vue-i18n.intlify.dev/",
-        },
-        {
-          title: "Axios 1.4.0",
-          img: "./technologies/axios.png",
-          url: "https://axios-http.com/",
-          urlPlugin: "https://axios-http.com/",
-        },
-        {
-          title: "Tailwind css 3.3.5",
-          img: "./technologies/tailwind.svg",
-          url: "https://tailwindcss.com/",
-          urlPlugin: "",
-        },
-      ],
-    };
+<script setup lang="ts">
+import { Clipboard } from "v-clipboard";
+
+const list: Array<any> = [
+  {
+    title: "Vue 3.2.13",
+    img: "./technologies/vue.svg",
+    url: "https://vuejs.org/",
+    urlPlugin: "https://vuejs.org/",
   },
-  methods: {
-    copy(message) {
-      this.$clipboard(message);
-    },
+  {
+    title: "SASS/SCSS 1.63.6",
+    img: "./technologies/scss.png",
+    url: "https://sass-lang.com/",
+    urlPlugin: "https://cli.vuejs.org/guide/css.html#pre-processors",
   },
-};
+  {
+    title: "Dotenv 16.3.1",
+    img: "./technologies/dotenv.png",
+    url: "https://github.com/motdotla/dotenv",
+    urlPlugin: "https://github.com/motdotla/dotenv",
+  },
+  {
+    title: "Pinia 2.1.7",
+    img: "./technologies/pinia.svg",
+    url: "https://pinia.vuejs.org/",
+    urlPlugin: "https://pinia.vuejs.org/introduction.html",
+  },
+  {
+    title: "Vue-router 4.0.3",
+    img: "./technologies/router.png",
+    url: "https://router.vuejs.org/",
+    urlPlugin: "https://router.vuejs.org/",
+  },
+  {
+    title: "Vue-i18n 9.3.0-beta.24",
+    img: "./technologies/i18n.svg",
+    url: "https://vue-i18n.intlify.dev/",
+    urlPlugin: "https://vue-i18n.intlify.dev/",
+  },
+  {
+    title: "Axios 1.4.0",
+    img: "./technologies/axios.png",
+    url: "https://axios-http.com/",
+    urlPlugin: "https://axios-http.com/",
+  },
+  {
+    title: "Tailwind css 3.3.5",
+    img: "./technologies/tailwind.svg",
+    url: "https://tailwindcss.com/",
+    urlPlugin: "",
+  },
+];
+
+const old: Array<any> = [
+  {
+    title: "Vuex 4.0.2",
+    img: "./technologies/vuex.png",
+    url: "https://vuex.vuejs.org/",
+    urlPlugin: "https://vuex.vuejs.org/installation.html",
+  },
+];
+
+function copy(message) {
+  Clipboard.copy(message);
+}
 </script>
 
 <style lang='scss' scoped>
@@ -231,6 +260,7 @@ export default {
     // align-items: center;
     // width: 100%
     @include adaptiv-value(row-gap, 10, 5, 1);
+    margin-bottom: 20px;
 
     &-title {
       @include adaptiv-value(font-size, 18, 16, 1);
@@ -239,15 +269,13 @@ export default {
       cursor: pointer;
     }
     &-img {
-      width: 100%;
-      max-width: 40px;
-      height: 100%;
-      max-height: 40px;
       cursor: pointer;
 
       & img {
         width: 100%;
+        max-width: 40px;
         height: 100%;
+        max-height: 40px;
         object-fit: cover;
       }
     }
